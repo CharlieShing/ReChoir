@@ -16,7 +16,13 @@ public class PracticeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String song_name = intent.getStringExtra("SONG_NAME");
 
+        if (song_name == "") {
+            song_name = "Sound Of Silence";
+        }
+
+        String output = "Now playing: " + song_name;
+
         TextView textView = findViewById(R.id.textView);
-        textView.setText(song_name);
+        textView.setText(output);
     }
 }

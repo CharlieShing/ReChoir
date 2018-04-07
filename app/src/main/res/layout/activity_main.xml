@@ -34,6 +34,7 @@
         android:layout_width="80dp"
         android:layout_height="65dp"
         android:background="@mipmap/scan_icon"
+        android:onClick="openScan"
         app:layout_constraintBaseline_toBaselineOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

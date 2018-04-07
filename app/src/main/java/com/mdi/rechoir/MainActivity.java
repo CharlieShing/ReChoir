@@ -22,4 +22,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PracticeActivity.class);
         startActivity(intent);
     }
+
+    public void openScan(View view){
+        Intent intent = new Intent(this, ScanActivity.class);
+        startActivity(intent);
+    }
 }
