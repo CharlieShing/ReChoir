@@ -16,7 +16,7 @@ public class PracticeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String song_name = intent.getStringExtra("SONG_NAME");
 
-        if (song_name == "") {
+        if (song_name == null) {
             song_name = "Sound Of Silence";
         }
 
