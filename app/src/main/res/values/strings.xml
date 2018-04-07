@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ReChoir</string>
+    <string name="button_library">Library</string>
+    <string name="button_practice">Practice</string>
+    <string name="button_scan">Scan notes</string>
+    <string name="main_image_description">Image placeholder</string>
+    <string name="title_activity_library">LibraryActivity</string>
+    <string name="action_settings">Settings</string>
+</resources>
