@@ -69,4 +69,12 @@ public class PracticeActivity extends AppCompatActivity {
     public void clearCanvas(View v) {
         customCanvas.clearCanvas();
     }
+
+    public void play(View v) {
+        customCanvas.play();
+    }
+
+    public void stop(View v) {
+        customCanvas.stop();
+    }
 }

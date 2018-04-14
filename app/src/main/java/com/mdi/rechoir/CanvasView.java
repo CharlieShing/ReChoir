@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -32,13 +31,23 @@ public class CanvasView extends View {
     private float lStartY;
     private float lEndX;
     private float lEndY;
+    private float dLineX; // When starting to play this stores the current delta
+    private float dLineY;
 
     private float lLength; // Line length
     private Paint lPaint;   // Line paint
 
     // Define variables for animation
+    private boolean playing;
+    private boolean timer;
     private int fps = 60;
-    long animationDuration = 10000;
+    private long startTime;
+
+    private float endOfLine; // The max X value for line
+    private float startOfLine; // All but the first line start in different place
+    private float lineSpacing; // The spacing between each line in sheet
+    private int lines; // Number of lines in sheet
+    private int currentLine;
 
 
     public CanvasView(Context c, AttributeSet attrs) {
@@ -55,6 +64,12 @@ public class CanvasView extends View {
 
         lEndX = lStartX;
         lEndY = lStartY + lLength;
+
+        dLineX = 0;
+        dLineY = 0;
+
+        lines = 3;
+        currentLine = 1;
 
         lPaint = new Paint();
         lPaint.setAntiAlias(true);
@@ -93,26 +108,51 @@ public class CanvasView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        // Set canvas dimensions
+        height = canvas.getHeight();
+        width = canvas.getWidth();
+
+        // Set sheet dimensions
+        startOfLine = width * 5 / 34;
+        endOfLine = (width * 31) / 34;
+        lineSpacing = height * 65 / 224;
+
+
+        // If playing then move line
+        if (playing) {
+            if ((lStartX + dLineX) < endOfLine) {
+                // Increase dLineX
+                dLineX += 3;
+            } else {
+                // If the last line has been reached start over
+                if (currentLine < lines) {
+                    // Reset dLineX and move to next line by increasing dLineY
+                    dLineX = -(lStartX - startOfLine);
+                    dLineY += lineSpacing;
+                    currentLine++;
+                } else {
+                    dLineX = 0;
+                    dLineY = 0;
+                    currentLine = 1;
+                }
+            }
+        }
+
         // Dst rect defined to fill canvas
         RectF rectf = new RectF(0, 0, canvas.getWidth(), canvas.getHeight());
 
         // Draw image on canvas
         canvas.drawBitmap(sBitmap, null, rectf, mPaint);
 
-        // Fetch canvas dimensions
-        int height = canvas.getHeight();
-        int width = canvas.getWidth();
-
-        lLength = height * 2 / 10;
-
-        lStartX = width*2/12;
-        lStartY = height/22;
-
+        lLength = (height * 2) / 9;
+        lStartX = (width * 4) / 15;
+        lStartY = (height * 2) / 21;
         lEndX = lStartX;
         lEndY = lStartY + lLength;
 
         // Draw line on canvas
-        canvas.drawLine(lStartX+100, lStartY+100, lEndX+100, lEndY+100, lPaint);
+        canvas.drawLine(lStartX + dLineX, lStartY + dLineY, lEndX + dLineX, lEndY + dLineY, lPaint);
+        this.postInvalidateDelayed( 1000 / fps);
     }
 
     // when ACTION_DOWN start touch according to the x,y values
@@ -164,5 +204,13 @@ public class CanvasView extends View {
                 break;
         }
         return true;
+    }
+
+    public void play() {
+        playing = true;
+    }
+
+    public void stop() {
+        playing = false;
     }
 }
