@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+    private boolean practiceFirstOpen = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,11 +16,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void openLibrary(View view){
         Intent intent = new Intent(this, LibraryActivity.class);
+        if (practiceFirstOpen) {
+            intent.putExtra("PRACTICE_FIRST_OPEN", "yes");
+        } else {
+            intent.putExtra("PRACTICE_FIRST_OPEN", "no");
+        }
         startActivity(intent);
     }
 
     public void openPractice(View view){
         Intent intent = new Intent(this, PracticeActivity.class);
+        if (practiceFirstOpen) {
+            intent.putExtra("FIRST_OPEN", "yes");
+            practiceFirstOpen = false;
+        } else {
+            intent.putExtra("FIRST_OPEN", "no");
+        }
         startActivity(intent);
     }
 

@@ -6,4 +6,8 @@
     <string name="main_image_description">Image placeholder</string>
     <string name="title_activity_library">LibraryActivity</string>
     <string name="action_settings">Settings</string>
+    <string name="soprano_label">Soprano</string>
+    <string name="alto_label">Alto</string>
+    <string name="tenor_label">Tenor</string>
+    <string name="bass_label">Bass</string>
 </resources>

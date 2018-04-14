@@ -28,11 +28,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:clickable="true"
+        android:focusable="true"
         android:padding="5dp"
         android:background="#85000000"
         android:alpha="50">
 
         <LinearLayout
+            android:id="@+id/controls_player"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -45,7 +47,8 @@
                 android:layout_height="60dp"
                 android:onClick="rewind"
                 android:background="@mipmap/backward_icon"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:alpha="@dimen/play_controls_alpha"/>
 
             <Button
                 android:id="@+id/button_stop"
@@ -53,7 +56,8 @@
                 android:layout_height="60dp"
                 android:onClick="stop"
                 android:background="@mipmap/pause_icon"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:alpha="@dimen/play_controls_alpha"/>
 
             <Button
                 android:id="@+id/button_play"
@@ -61,7 +65,7 @@
                 android:layout_height="60dp"
                 android:onClick="play"
                 android:background="@mipmap/play_icon"
-                android:layout_marginRight="10dp"/>
+                android:alpha="@dimen/play_controls_alpha"/>
 
             <!--
             <Button
@@ -70,6 +74,112 @@
                 android:layout_height="60dp"
                 android:onClick="loop"
                 android:background="@mipmap/loop_icon"/>-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/controls_volume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/controls_player"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/volume_labels_width"
+                    android:layout_height="wrap_content"
+                    android:text="@string/soprano_label"
+                    android:textColor="@color/volume_control_labels"
+                    android:textSize="@dimen/volume_labels_font_size"/>
+
+                <SeekBar
+                    android:id="@+id/soprano_slider"
+                    android:layout_width="@dimen/volume_sliders_width"
+                    android:layout_height="@dimen/volume_sliders_height"
+                    android:max="100"
+                    android:maxHeight="6dp"
+                    android:minHeight="6dp"
+                    android:progressDrawable="@drawable/volume_seekbar"
+                    android:thumbTint="@color/white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/volume_labels_width"
+                    android:layout_height="wrap_content"
+                    android:text="@string/alto_label"
+                    android:textColor="@color/volume_control_labels"
+                    android:textSize="@dimen/volume_labels_font_size"/>
+
+                <SeekBar
+                    android:id="@+id/alto_slider"
+                    android:layout_width="@dimen/volume_sliders_width"
+                    android:layout_height="@dimen/volume_sliders_height"
+                    android:max="100"
+                    android:maxHeight="6dp"
+                    android:minHeight="6dp"
+                    android:progressDrawable="@drawable/volume_seekbar"
+                    android:thumbTint="@color/white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/volume_labels_width"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tenor_label"
+                    android:textColor="@color/volume_control_labels"
+                    android:textSize="@dimen/volume_labels_font_size"/>
+
+                <SeekBar
+                    android:id="@+id/tenor_slider"
+                    android:layout_width="@dimen/volume_sliders_width"
+                    android:layout_height="@dimen/volume_sliders_height"
+                    android:max="100"
+                    android:maxHeight="6dp"
+                    android:minHeight="6dp"
+                    android:progressDrawable="@drawable/volume_seekbar"
+                    android:thumbTint="@color/white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/volume_labels_width"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bass_label"
+                    android:textColor="@color/volume_control_labels"
+                    android:textSize="@dimen/volume_labels_font_size"/>
+
+                <SeekBar
+                    android:id="@+id/bass_slider"
+                    android:layout_width="@dimen/volume_sliders_width"
+                    android:layout_height="@dimen/volume_sliders_height"
+                    android:max="100"
+                    android:maxHeight="6dp"
+                    android:minHeight="6dp"
+                    android:progressDrawable="@drawable/volume_seekbar"
+                    android:thumbTint="@color/white"/>
+
+            </LinearLayout>
 
         </LinearLayout>
     </RelativeLayout>

@@ -17,6 +17,10 @@ public class LibraryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
 
+        Intent intent = getIntent();
+
+        // See if practice has been opened yet
+        final String practice_first_open = intent.getStringExtra("PRACTICE_FIRST_OPEN");
 
         // Array which represents available songs in list
         final String[] songs = {"Agnus Dei", "Bohemian Rhapsody", "Choir Girl", "Christ My Saviour", "In Paradisum", "Kyrie", "This Is A Song", "This Might Be A Song", "This Is Not A Song", "Somebody To Love", "Thank You For The Music", "The End Is Nigh", "Jesus Loves Everybody", "For The Love Of Jesus", "In My Heart Lives A Guy Called Jesus", "When Jesus Wept"};
@@ -35,6 +39,11 @@ public class LibraryActivity extends AppCompatActivity {
                 Object listItem = listView.getItemAtPosition(position);
                 Intent intent = new Intent(cnt_this, PracticeActivity.class);
                 intent.putExtra("SONG_NAME", songs[position]);
+                if (practice_first_open.equals("yes")) {
+                    intent.putExtra("FIRST_OPEN", "yes");
+                } else {
+                    intent.putExtra("FIRST_OPEN", "no");
+                }
                 startActivity(intent);
             }
         });

@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AbsListView;
@@ -58,6 +59,7 @@ public class PracticeActivity extends AppCompatActivity {
         // Get the Intent that started this activity and extract the song name
         Intent intent = getIntent();
         String song_name = intent.getStringExtra("SONG_NAME");
+        String first_open = intent.getStringExtra("FIRST_OPEN");
 
         if (song_name == null) {
             song_name = "Sound Of Silence";
@@ -68,9 +70,15 @@ public class PracticeActivity extends AppCompatActivity {
 
         Context context = getApplicationContext();
         CharSequence text = "Slide up bottom for more options!";
-        int duration = Toast.LENGTH_SHORT;
+        int duration = Toast.LENGTH_LONG;
 
-        Toast.makeText(context, text, duration).show();
+        //Show toast if first time to start practice
+        if (first_open.equals("yes")){
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.setGravity(Gravity.CENTER, 0, -200);
+            toast.show();
+        }
+
     }
 
     public void clearCanvas(View v) {
