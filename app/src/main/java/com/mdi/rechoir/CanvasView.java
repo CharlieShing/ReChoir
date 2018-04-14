@@ -39,7 +39,7 @@ public class CanvasView extends View {
 
     // Define variables for animation
     private boolean playing;
-    private boolean timer;
+    private boolean loop;
     private int fps = 60;
     private long startTime;
 
@@ -70,6 +70,9 @@ public class CanvasView extends View {
 
         lines = 3;
         currentLine = 1;
+
+        playing = false;
+        loop = false;
 
         lPaint = new Paint();
         lPaint.setAntiAlias(true);
@@ -131,9 +134,13 @@ public class CanvasView extends View {
                     dLineY += lineSpacing;
                     currentLine++;
                 } else {
-                    dLineX = 0;
-                    dLineY = 0;
-                    currentLine = 1;
+                    if (loop) {
+                        dLineX = 0;
+                        dLineY = 0;
+                        currentLine = 1;
+                    } else {
+                        playing = false;
+                    }
                 }
             }
         }
@@ -207,10 +214,51 @@ public class CanvasView extends View {
     }
 
     public void play() {
-        playing = true;
+        int forwardStep = 100;
+        if (playing) {
+            if (dLineX + lStartX + forwardStep < endOfLine) {
+                dLineX += forwardStep;
+            }
+        } else {
+            playing = true;
+        }
     }
 
     public void stop() {
+        if (!playing) {
+            dLineX = 0;
+            dLineY = 0;
+            currentLine = 1;
+        } else {
+            playing = false;
+        }
+    }
+
+    public void rewind() {
         playing = false;
+        int rewindStep = 100;
+        if(currentLine == 1) {
+            if (dLineX - rewindStep > 0) {
+                dLineX -= rewindStep;
+            } else {
+                dLineX = 0;
+            }
+        } else {
+            if ((lStartX + dLineX - rewindStep) - startOfLine > 0) {
+                dLineX -= rewindStep;
+            } else {
+                currentLine--;
+                dLineX = endOfLine - lStartX;
+                dLineY -= lineSpacing;
+            }
+        }
+    }
+
+    public void loop() {
+        if (loop) {
+            loop = false;
+        } else {
+            loop = true;
+        }
     }
 }

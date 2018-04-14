@@ -77,4 +77,8 @@ public class PracticeActivity extends AppCompatActivity {
     public void stop(View v) {
         customCanvas.stop();
     }
+
+    public void rewind(View v) {
+        customCanvas.rewind();
+    }
 }
