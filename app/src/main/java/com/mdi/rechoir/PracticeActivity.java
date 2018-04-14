@@ -19,6 +19,7 @@ import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Timer;
 
@@ -64,6 +65,12 @@ public class PracticeActivity extends AppCompatActivity {
 
         // Initialize canvas
         customCanvas = (CanvasView) findViewById(R.id.signature_canvas);
+
+        Context context = getApplicationContext();
+        CharSequence text = "Slide up bottom for more options!";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast.makeText(context, text, duration).show();
     }
 
     public void clearCanvas(View v) {
