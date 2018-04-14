@@ -30,6 +30,7 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -67,6 +68,12 @@ public class ScanActivity extends AppCompatActivity {
     private boolean mFlashSupported;
     private Handler mBackgroundHandler;
     private HandlerThread mBackgroundThread;
+
+    // The ImageView which will handle display of demo images
+    private ImageView imageView;
+    private int imageIndex = 1;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,15 +81,49 @@ public class ScanActivity extends AppCompatActivity {
         textureView = (TextureView) findViewById(R.id.texture);
         assert textureView != null;
         textureView.setSurfaceTextureListener(textureListener);
-        takePictureButton = (Button) findViewById(R.id.btn_takepicture);
-        assert takePictureButton != null;
-        takePictureButton.setOnClickListener(new View.OnClickListener() {
+
+        imageView = findViewById(R.id.imageView);
+
+
+        new Runnable() {
+            int updateInterval = 5000; //=five seconds
+
             @Override
-            public void onClick(View v) {
-                takePicture();
+            public void run() {
+
+                imageView.postDelayed(this, updateInterval);
+
+                switch (imageIndex) {
+                    case 1: imageView.setImageResource(R.drawable.scan_animation_1);
+                    imageIndex++;
+                    break;
+                    case 2: imageView.setImageResource(R.drawable.scan_animation_2);
+                    imageIndex++;
+                    break;
+                    case 3: imageView.setImageResource(R.drawable.scan_animation_3);
+                    imageIndex++;
+                    break;
+                    case 4: imageView.setImageResource(R.drawable.scan_animation_4);
+                    imageIndex++;
+                    break;
+                    case 5: imageView.setImageResource(R.drawable.scan_animation_5);
+                        imageIndex++;
+                        break;
+                    case 6: imageView.setImageResource(R.drawable.scan_animation_6);
+                        imageIndex++;
+                        break;
+                    case 7: imageView.setImageResource(R.drawable.scan_animation_7);
+                        imageIndex++;
+                        break;
+                    case 8: imageView.setImageResource(R.drawable.scan_animation_8);
+                        imageIndex = 1;
+                        break;
+                }
             }
-        });
+        }.run();
+
     }
+
     TextureView.SurfaceTextureListener textureListener = new TextureView.SurfaceTextureListener() {
         @Override
         public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
@@ -233,7 +274,7 @@ public class ScanActivity extends AppCompatActivity {
         try {
             SurfaceTexture texture = textureView.getSurfaceTexture();
             assert texture != null;
-            texture.setDefaultBufferSize(imageDimension.getWidth(), imageDimension.getHeight());
+            texture.setDefaultBufferSize(imageDimension.getWidth(), imageDimension.getHeight()/2);
             Surface surface = new Surface(texture);
             captureRequestBuilder = cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
             captureRequestBuilder.addTarget(surface);
@@ -326,4 +367,6 @@ public class ScanActivity extends AppCompatActivity {
         stopBackgroundThread();
         super.onPause();
     }
+
+
 }
