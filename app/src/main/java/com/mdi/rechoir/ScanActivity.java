@@ -40,6 +40,10 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+/*
+Everything related to camera was found at https://inducesmile.com/android/android-camera2-api-example-tutorial/
+ */
 public class ScanActivity extends AppCompatActivity {
     private static final String TAG = "AndroidCameraApi";
     private Button takePictureButton;
