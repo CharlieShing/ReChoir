@@ -105,8 +105,8 @@
                     android:maxHeight="6dp"
                     android:minHeight="6dp"
                     android:progressDrawable="@drawable/volume_seekbar"
-                    android:thumbTint="@color/white"/>
-
+                    android:thumbTint="@color/white"
+                    android:progress="100"/>
             </LinearLayout>
 
             <LinearLayout
@@ -129,8 +129,8 @@
                     android:maxHeight="6dp"
                     android:minHeight="6dp"
                     android:progressDrawable="@drawable/volume_seekbar"
-                    android:thumbTint="@color/white"/>
-
+                    android:thumbTint="@color/white"
+                    android:progress="100"/>
             </LinearLayout>
 
             <LinearLayout
@@ -153,8 +153,8 @@
                     android:maxHeight="6dp"
                     android:minHeight="6dp"
                     android:progressDrawable="@drawable/volume_seekbar"
-                    android:thumbTint="@color/white"/>
-
+                    android:thumbTint="@color/white"
+                    android:progress="100"/>
             </LinearLayout>
 
             <LinearLayout
@@ -177,10 +177,9 @@
                     android:maxHeight="6dp"
                     android:minHeight="6dp"
                     android:progressDrawable="@drawable/volume_seekbar"
-                    android:thumbTint="@color/white"/>
-
+                    android:thumbTint="@color/white"
+                    android:progress="100"/>
             </LinearLayout>
-
         </LinearLayout>
     </RelativeLayout>
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>

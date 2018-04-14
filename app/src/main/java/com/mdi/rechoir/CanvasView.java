@@ -6,25 +6,18 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 
 public class CanvasView extends View {
 
     public int width;
     public int height;
-    private Bitmap mBitmap;
-    private Canvas mCanvas;
-    private Path mPath;
     Context context;
-    private Paint mPaint;
-    private float mX, mY;
-    private static final float TOLERANCE = 5;
 
     private Bitmap sBitmap; // Sheet bitmap
+    private Paint sPaint;    // Sheet paint
 
     // Line coordinates
     private float lStartX;
@@ -41,7 +34,6 @@ public class CanvasView extends View {
     private boolean playing;
     private boolean loop;
     private int fps = 60;
-    private long startTime;
 
     private float endOfLine; // The max X value for line
     private float startOfLine; // All but the first line start in different place
@@ -82,28 +74,8 @@ public class CanvasView extends View {
         lPaint.setStrokeJoin(Paint.Join.ROUND);
         lPaint.setAlpha(75);
 
-
-        // we set a new Path
-        mPath = new Path();
-
         // and we set a new Paint with the desired attributes
-        mPaint = new Paint();
-        mPaint.setAntiAlias(true);
-        mPaint.setColor(Color.BLACK);
-        mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeJoin(Paint.Join.ROUND);
-        mPaint.setStrokeWidth(4f);
-    }
-
-    // override onSizeChanged
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-
-        // your Canvas will draw onto the defined Bitmap
-        mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-        sBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ave_maria_p1);
-        mCanvas = new Canvas(mBitmap);
+        sPaint = new Paint();
     }
 
     // override onDraw
@@ -149,7 +121,7 @@ public class CanvasView extends View {
         RectF rectf = new RectF(0, 0, canvas.getWidth(), canvas.getHeight());
 
         // Draw image on canvas
-        canvas.drawBitmap(sBitmap, null, rectf, mPaint);
+        canvas.drawBitmap(sBitmap, null, rectf, sPaint);
 
         lLength = (height * 2) / 9;
         lStartX = (width * 4) / 15;
@@ -160,57 +132,6 @@ public class CanvasView extends View {
         // Draw line on canvas
         canvas.drawLine(lStartX + dLineX, lStartY + dLineY, lEndX + dLineX, lEndY + dLineY, lPaint);
         this.postInvalidateDelayed( 1000 / fps);
-    }
-
-    // when ACTION_DOWN start touch according to the x,y values
-    private void startTouch(float x, float y) {
-        mPath.moveTo(x, y);
-        mX = x;
-        mY = y;
-    }
-
-    // when ACTION_MOVE move touch according to the x,y values
-    private void moveTouch(float x, float y) {
-        float dx = Math.abs(x - mX);
-        float dy = Math.abs(y - mY);
-        if (dx >= TOLERANCE || dy >= TOLERANCE) {
-            mPath.quadTo(mX, mY, (x + mX) / 2, (y + mY) / 2);
-            mX = x;
-            mY = y;
-        }
-    }
-
-    public void clearCanvas() {
-        mPath.reset();
-        invalidate();
-    }
-
-    // when ACTION_UP stop touch
-    private void upTouch() {
-        mPath.lineTo(mX, mY);
-    }
-
-    //override the onTouchEvent
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        float x = event.getX();
-        float y = event.getY();
-
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                startTouch(x, y);
-                invalidate();
-                break;
-            case MotionEvent.ACTION_MOVE:
-                moveTouch(x, y);
-                invalidate();
-                break;
-            case MotionEvent.ACTION_UP:
-                upTouch();
-                invalidate();
-                break;
-        }
-        return true;
     }
 
     public void play() {
