@@ -1,21 +1,30 @@
 package com.mdi.rechoir;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.AbsListView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.Timer;
 
 public class PracticeActivity extends AppCompatActivity {
 
+    /*
     // Screen size
     private int screenWidth;
     private int screenHeight;
@@ -31,6 +40,15 @@ public class PracticeActivity extends AppCompatActivity {
     private Handler handler;
     private Timer timer = new Timer();
 
+    // Image bitmap
+    private Bitmap bm;
+
+    // Don't really know what these are for
+    private float x;
+    private float y;*/
+
+    private CanvasView customCanvas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,39 +62,11 @@ public class PracticeActivity extends AppCompatActivity {
             song_name = "Sound Of Silence";
         }
 
-        String output = "Now playing: " + song_name;
+        // Initialize canvas
+        customCanvas = (CanvasView) findViewById(R.id.signature_canvas);
+    }
 
-        TextView textView = findViewById(R.id.textView);
-        textView.setText(output);
-
-        /*
-        The following handles drawing and moving of image with the help of an ImageView
-         */
-
-        // Assign image
-        image = (ImageView) findViewById(R.id.imageView);
-
-        // Get Screen Size
-        WindowManager wm = getWindowManager();
-        Display disp = wm.getDefaultDisplay();
-        Point size = new Point();
-        disp.getSize(size);
-        screenWidth = size.x;
-        screenHeight = size.y;
-
-        // Set image to default position
-        image.setX(-40.0f);
-        
-
-        /*
-        The following handles alternative solution; to use a canvas and draw image on that.
-        This might enable easier and more accurate handling of image manipulation such as zooming.
-         */
-
-        /*
-
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.mipmap.ave_maria_p1);
-
-        */
+    public void clearCanvas(View v) {
+        customCanvas.clearCanvas();
     }
 }
