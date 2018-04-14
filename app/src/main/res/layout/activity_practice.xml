@@ -77,12 +77,23 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/volume_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volume controls"
+            android:textSize="@dimen/volume_labels_font_size"
+            android:textColor="@color/volume_control_labels"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/controls_player"
+            android:layout_marginTop="30dp"/>
+
         <LinearLayout
             android:id="@+id/controls_volume"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_below="@id/controls_player"
+            android:layout_below="@id/volume_label"
             android:padding="20dp">
 
             <LinearLayout
@@ -179,6 +190,54 @@
                     android:progressDrawable="@drawable/volume_seekbar"
                     android:thumbTint="@color/white"
                     android:progress="100"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/volume_labels_width"
+                    android:layout_height="wrap_content"
+                    android:text="@string/metronome_label"
+                    android:textColor="@color/volume_control_labels"
+                    android:textSize="@dimen/volume_labels_font_size"/>
+
+                <SeekBar
+                    android:id="@+id/metronome_slider"
+                    android:layout_width="@dimen/volume_sliders_width"
+                    android:layout_height="@dimen/volume_sliders_height"
+                    android:max="100"
+                    android:maxHeight="6dp"
+                    android:minHeight="6dp"
+                    android:progressDrawable="@drawable/volume_seekbar"
+                    android:progress="100"/>
+            </LinearLayout>
+
+            <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/volume_labels_font_size"
+                    android:textColor="@color/volume_control_labels"
+                    android:text="@string/tempo_label"/>
+                <EditText
+                    android:id="@+id/tempoValue"
+                    android:layout_width="50dp"
+                    android:layout_height="@dimen/volume_sliders_height"
+                    android:textColor="@color/white"
+                    android:hint="@string/tempo_hint"
+                    android:textColorHint="@color/gray"
+                    android:inputType="number"/>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

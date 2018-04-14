@@ -10,4 +10,7 @@
     <string name="alto_label">Alto</string>
     <string name="tenor_label">Tenor</string>
     <string name="bass_label">Bass</string>
+    <string name="metronome_label">Metronome</string>
+    <string name="tempo_label">Tempo:</string>
+    <string name="tempo_hint">BPM</string>
 </resources>

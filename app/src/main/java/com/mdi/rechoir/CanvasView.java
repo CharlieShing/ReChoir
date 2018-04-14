@@ -139,6 +139,8 @@ public class CanvasView extends View {
         if (playing) {
             if (dLineX + lStartX + forwardStep < endOfLine) {
                 dLineX += forwardStep;
+            } else {
+                dLineX = endOfLine - lStartX;
             }
         } else {
             playing = true;
