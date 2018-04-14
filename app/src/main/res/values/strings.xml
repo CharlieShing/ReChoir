@@ -13,4 +13,7 @@
     <string name="metronome_label">Metronome</string>
     <string name="tempo_label">Tempo:</string>
     <string name="tempo_hint">BPM</string>
+    <string name="take_photo_help">Help maddafakka</string>
+    <string name="camera_not_found">No camer :/</string>
+    <string name="take_picture">Take picture</string>
 </resources>
