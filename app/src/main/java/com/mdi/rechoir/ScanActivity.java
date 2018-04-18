@@ -68,7 +68,7 @@ public class ScanActivity extends AppCompatActivity {
 
 
         new Runnable() {
-            int updateInterval = 5000; //=five seconds
+            int updateInterval = 2000; //=five seconds
 
             @Override
             public void run() {

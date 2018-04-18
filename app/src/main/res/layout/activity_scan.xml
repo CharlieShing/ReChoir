@@ -6,8 +6,6 @@
     android:orientation="vertical"
     tools:context="com.mdi.rechoir.ScanActivity">
 
-
-
     <TextureView
         android:id="@+id/texture"
         android:layout_width="match_parent"
@@ -20,9 +18,8 @@
         android:layout_height="200dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:background="@color/black_transparent"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:layout_margin="0dp">
 
         <ImageView
             android:id="@+id/imageView"
