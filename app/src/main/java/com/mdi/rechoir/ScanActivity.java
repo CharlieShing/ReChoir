@@ -24,11 +24,15 @@ import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.Surface;
 import android.view.TextureView;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import java.util.Arrays;
+
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 /*
 Everything related to camera was found at https://inducesmile.com/android/android-camera2-api-example-tutorial/
@@ -121,6 +125,25 @@ public class ScanActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter_tones = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, tones);
 
         dropdown_tone.setAdapter(adapter_tones);
+
+
+
+        /* Showcase for UX instructions */
+
+        View slider = findViewById(R.id.controls);
+
+        String ok = "Got it!";
+
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(500); // half second between each showcase view
+
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this, "Scan");
+
+        sequence.setConfig(config);
+
+        sequence.addSequenceItem(slider, "Slide up to reveal more options", ok);
+
+        sequence.start();
 
     }
 

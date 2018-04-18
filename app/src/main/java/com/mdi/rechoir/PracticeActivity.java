@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class PracticeActivity extends AppCompatActivity {
 
@@ -29,12 +31,31 @@ public class PracticeActivity extends AppCompatActivity {
         CharSequence text = "Slide up bottom for more options!";
         int duration = Toast.LENGTH_LONG;
 
+
+
         //Show toast if first time to start practice
         if (first_open.equals("yes")){
             Toast toast = Toast.makeText(context, text, duration);
-            toast.setGravity(Gravity.CENTER, 0, -200);
+            toast.setGravity(Gravity.BOTTOM, 0, -200);
             toast.show();
         }
+
+        /* Showcase for UX instructions */
+
+        View slider = findViewById(R.id.controls);
+
+        String ok = "Got it!";
+
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(500); // half second between each showcase view
+
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this, "Practice");
+
+        sequence.setConfig(config);
+
+        sequence.addSequenceItem(slider, "Slide up to reveal more options", ok);
+
+        sequence.start();
 
     }
 
