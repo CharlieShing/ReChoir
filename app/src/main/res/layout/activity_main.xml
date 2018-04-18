@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_layout"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -25,7 +25,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/main_header"
         android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/main_header_margin">
 
         <LinearLayout
@@ -105,8 +104,18 @@
         android:id="@+id/main_footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@color/gray"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:text="Prototype made by the ReChoir group. Copyright in effect so beware of any mischief!"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
