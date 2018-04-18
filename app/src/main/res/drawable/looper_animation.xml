@@ -1,0 +1,111 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item
+        android:drawable="@drawable/looper1"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper2"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper3"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper4"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper5"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper6"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper7"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper8"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper9"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper11"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper12"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper13"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper14"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper15"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper16"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper17"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper18"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper19"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper20"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper21"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper22"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper23"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper24"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper25"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper26"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper27"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper28"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper29"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper30"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper31"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper32"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper33"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper34"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper35"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper36"
+        android:duration="@integer/animation_delay" />
+    <item
+        android:drawable="@drawable/looper37"
+        android:duration="@integer/animation_delay" />
+</animation-list>

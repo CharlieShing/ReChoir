@@ -3,11 +3,13 @@ package com.mdi.rechoir;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
@@ -16,6 +18,7 @@ public class PracticeActivity extends AppCompatActivity {
 
     private CanvasView customCanvas;
     private boolean looping;
+    AnimationDrawable loopAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,14 @@ public class PracticeActivity extends AppCompatActivity {
             toast.show();
         }
 
+        /*
+        //Start loop animation
+        // Load the ImageView that will host the animation and
+        // set its background to our AnimationDrawable XML resource.
+        ImageView img = (ImageView) findViewById(R.id.button_loop);
+        img.setBackgroundResource(R.drawable.looper_animation);
+        loopAnimation = (AnimationDrawable) img.getBackground();
+
         /* Showcase for UX instructions */
 
         View slider = findViewById(R.id.controls);
@@ -62,6 +73,12 @@ public class PracticeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //loopAnimation.start();
+    }
+
     public void play(View v) {
         customCanvas.play();
     }
@@ -75,26 +92,6 @@ public class PracticeActivity extends AppCompatActivity {
     }
 
     public void loop(View v) {
-        Button btn = (Button)findViewById(R.id.button_loop);
-        if (!looping) {
-            customCanvas.loop();
-            looping = true;
-
-            //Start loop animation
-            // Load the ImageView that will host the animation and
-            // set its background to our AnimationDrawable XML resource.
-            btn.setBackgroundResource(R.drawable.looper_animation_tmp);
-
-            // Get the background, which has been compiled to an AnimationDrawable object.
-            AnimationDrawable frameAnimation = (AnimationDrawable) btn.getBackground();
-
-            // Start the animation (looped playback by default).
-            frameAnimation.start();
-
-        } else {
-            looping = false;
-            customCanvas.loop();
-            btn.setBackgroundResource(R.drawable.looper1);
-        }
+        customCanvas.loop();
     }
 }

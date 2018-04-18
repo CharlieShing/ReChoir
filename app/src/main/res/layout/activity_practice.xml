@@ -64,12 +64,23 @@
                 android:layout_marginRight="20dp"
                 android:background="@mipmap/forward_icon_alt"/>
 
-            <Button
-                android:id="@+id/button_loop"
+            <RelativeLayout
                 android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:onClick="loop"
-                android:background="@drawable/looper1"/>
+                android:layout_height="60dp">
+
+                <ImageView
+                    android:id="@+id/button_loop"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp" />
+
+                <Button
+                    android:id="@+id/button_loop_alt"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:onClick="loop"
+                    android:background="@drawable/looper1"
+                    android:visibility="visible"/>
+            </RelativeLayout>
 
         </LinearLayout>
 
