@@ -105,24 +105,29 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/volume_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Volume controls"
-            android:textSize="@dimen/volume_labels_font_size"
-            android:textColor="@color/volume_control_labels"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/controls_player"
-            android:layout_marginTop="30dp"/>
-
         <LinearLayout
             android:id="@+id/controls_volume"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_below="@id/volume_label"
+            android:layout_below="@id/controls_player"
             android:padding="20dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:id="@+id/volume_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Volume controls"
+                android:textSize="@dimen/volume_labels_font_size"
+                android:textColor="@color/volume_control_labels"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
