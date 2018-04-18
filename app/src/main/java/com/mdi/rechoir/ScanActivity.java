@@ -120,39 +120,41 @@ public class ScanActivity extends AppCompatActivity {
             }
         }.run();
 
-        Spinner dropdown_length = findViewById(R.id.spinner_length);
-
         String[] note_lengths = new String[]{"1/32", "1/16", "1/8", "1/4", "1/2", "1"};
 
-        ArrayAdapter<String> adapter_length = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, note_lengths);
+        // Initiate spinners to represent note editing functions when scanning new sheet
+        Spinner dropdown_length = findViewById(R.id.note_spinner);
 
+        ArrayAdapter<String> adapter_length = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, note_lengths);
         dropdown_length.setAdapter(adapter_length);
 
-        Spinner dropdown_tone = findViewById(R.id.spinner_tone);
 
-        String[] tones = new String[]{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "Pause"};
+        Spinner note_spinner = (Spinner) findViewById(R.id.note_spinner);
+        ArrayAdapter<CharSequence> note_adapter = ArrayAdapter.createFromResource(this, R.array.notes, R.layout.simple_spinner_item);
+        note_adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item);
+        note_spinner.setAdapter(note_adapter);
 
-        ArrayAdapter<String> adapter_tones = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, tones);
 
-        dropdown_tone.setAdapter(adapter_tones);
-
+        Spinner tone_spinner = (Spinner) findViewById(R.id.tone_spinner);
+        ArrayAdapter<CharSequence> tone_adapter = ArrayAdapter.createFromResource(this, R.array.tones, R.layout.simple_spinner_item);
+        tone_adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item);
+        tone_spinner.setAdapter(tone_adapter);
 
 
         /* Showcase for UX instructions */
-
         View slider = findViewById(R.id.controls);
+        View focus = findViewById(R.id.scan_focus);
 
         String ok = "Got it!";
 
         ShowcaseConfig config = new ShowcaseConfig();
         config.setDelay(500); // half second between each showcase view
-
         MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this, "Scan");
-
         sequence.setConfig(config);
-
-        sequence.addSequenceItem(slider, "Slide up to reveal more options", ok);
-
+        sequence.addSequenceItem(focus, "Keep sheet of music centered in camera view to scan them", ok);
+        sequence.addSequenceItem(slider, "To edit recorded notes first click on note to mark it...", ok);
+        sequence.addSequenceItem(slider, "...slide up to reveal more options...", ok);
+        sequence.addSequenceItem(slider, "...then change length and/or tone for the marked note.", ok);
         sequence.start();
 
     }
