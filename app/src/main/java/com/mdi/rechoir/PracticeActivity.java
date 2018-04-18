@@ -2,10 +2,12 @@ package com.mdi.rechoir;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
@@ -13,11 +15,14 @@ import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 public class PracticeActivity extends AppCompatActivity {
 
     private CanvasView customCanvas;
+    private boolean looping;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice);
+
+        looping = false;
 
         // Get the Intent that started this activity and extract the song name
         Intent intent = getIntent();
@@ -67,5 +72,29 @@ public class PracticeActivity extends AppCompatActivity {
 
     public void rewind(View v) {
         customCanvas.rewind();
+    }
+
+    public void loop(View v) {
+        Button btn = (Button)findViewById(R.id.button_loop);
+        if (!looping) {
+            customCanvas.loop();
+            looping = true;
+
+            //Start loop animation
+            // Load the ImageView that will host the animation and
+            // set its background to our AnimationDrawable XML resource.
+            btn.setBackgroundResource(R.drawable.looper_animation_tmp);
+
+            // Get the background, which has been compiled to an AnimationDrawable object.
+            AnimationDrawable frameAnimation = (AnimationDrawable) btn.getBackground();
+
+            // Start the animation (looped playback by default).
+            frameAnimation.start();
+
+        } else {
+            looping = false;
+            customCanvas.loop();
+            btn.setBackgroundResource(R.drawable.looper1);
+        }
     }
 }
