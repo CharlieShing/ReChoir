@@ -25,7 +25,6 @@
         android:layout_below="@id/main_header"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:gravity="bottom"
         android:layout_margin="@dimen/main_header_margin">
 
         <LinearLayout
@@ -61,7 +60,7 @@
             <Button
                 android:layout_width="@dimen/main_icon_size"
                 android:layout_height="@dimen/main_icon_size"
-                android:background="@mipmap/practice_icon"
+                android:background="@mipmap/practice_icon_alt"
                 android:onClick="openPractice"
                 android:layout_gravity="center"/>
 

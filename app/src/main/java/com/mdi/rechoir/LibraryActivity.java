@@ -23,7 +23,7 @@ public class LibraryActivity extends AppCompatActivity {
         final String practice_first_open = intent.getStringExtra("PRACTICE_FIRST_OPEN");
 
         // Array which represents available songs in list
-        final String[] songs = {"Agnus Dei", "Bohemian Rhapsody", "Choir Girl", "Christ My Saviour", "In Paradisum", "Kyrie", "This Is A Song", "This Might Be A Song", "This Is Not A Song", "Somebody To Love", "Thank You For The Music", "The End Is Nigh", "Jesus Loves Everybody", "For The Love Of Jesus", "In My Heart Lives A Guy Called Jesus", "When Jesus Wept"};
+        final String[] songs = {"Ave Maria"};
         Arrays.sort(songs);
 
         final ListView listView = (ListView) findViewById(R.id.listView);
