@@ -49,12 +49,13 @@ public class PracticeActivity extends AppCompatActivity {
         CharSequence text = "Slide up bottom for more options!";
         int duration = Toast.LENGTH_LONG;
 
+        /* Diabling toast due to showcase being enough
         //Show toast if first time to start practice
         if (first_open.equals("yes")){
             Toast toast = Toast.makeText(context, text, duration);
             toast.setGravity(Gravity.BOTTOM, 0, 200);
             toast.show();
-        }
+        }*/
 
         /*
         //Start loop animation
