@@ -24,7 +24,9 @@ import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.Surface;
 import android.view.TextureView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 import java.util.Arrays;
 
@@ -103,6 +105,22 @@ public class ScanActivity extends AppCompatActivity {
                 }
             }
         }.run();
+
+        Spinner dropdown_length = findViewById(R.id.spinner_length);
+
+        String[] note_lengths = new String[]{"1/32", "1/16", "1/8", "1/4", "1/2", "1"};
+
+        ArrayAdapter<String> adapter_length = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, note_lengths);
+
+        dropdown_length.setAdapter(adapter_length);
+
+        Spinner dropdown_tone = findViewById(R.id.spinner_tone);
+
+        String[] tones = new String[]{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "Pause"};
+
+        ArrayAdapter<String> adapter_tones = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, tones);
+
+        dropdown_tone.setAdapter(adapter_tones);
 
     }
 
