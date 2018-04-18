@@ -23,6 +23,15 @@
             android:background="@color/white"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="horizontal"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/toolbar"></LinearLayout>
+
 
         <TextView
             android:id="@+id/main_header"
