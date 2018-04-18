@@ -1,6 +1,7 @@
 package com.mdi.rechoir;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -33,6 +34,24 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black_48px);
 
+        // Handle click events
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+                        mDrawerLayout.closeDrawers();
+
+                        openLogin();
+
+                        return true;
+                    }
+                });
+
+
         /* Showcase for UX instructions */
 
         View lib_button = findViewById(R.id.library_button_container);
@@ -52,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         sequence.addSequenceItem(lib_button, "Library contains available songs to practice", ok);
         sequence.addSequenceItem(practice_button, "Here you go when you want to continue practicing song", ok);
         sequence.addSequenceItem(scan_button, "Scan notes lets you use the camera to scan a sheet of notes", ok);
-        sequence.addSequenceItem(nav_view, "Slide out menu to login", ok);
 
         sequence.start();
     }
@@ -91,6 +109,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openScan(View view){
         Intent intent = new Intent(this, ScanActivity.class);
+        startActivity(intent);
+    }
+
+    public void openLogin(){
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 }

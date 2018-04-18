@@ -16,4 +16,5 @@
     <string name="take_photo_help">Help maddafakka</string>
     <string name="camera_not_found">No camer :/</string>
     <string name="take_picture">Take picture</string>
+    <string name="login">Login</string>
 </resources>
