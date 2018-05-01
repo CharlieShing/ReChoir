@@ -79,6 +79,7 @@ public class PracticeActivity extends AppCompatActivity {
     @SuppressLint("NewApi")
     public void rewind(View v) {
         customCanvas.rewind();
+        mp.pause();
         mp.seekTo(mp.getCurrentPosition() - seekD);
     }
 

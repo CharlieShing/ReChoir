@@ -15,7 +15,6 @@ import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class MainActivity extends AppCompatActivity {
-    private boolean practiceFirstOpen = true;
     private DrawerLayout mDrawerLayout;
 
 

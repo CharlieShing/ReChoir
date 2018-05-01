@@ -3,6 +3,7 @@
 <!-- Use DrawerLayout as root container for activity -->
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -66,14 +67,8 @@
                     android:layout_width="@dimen/main_icon_size"
                     android:layout_height="@dimen/main_icon_size"
                     android:layout_gravity="center"
-                    android:background="@mipmap/library_icon_alt"
+                    android:background="@mipmap/library_icon"
                     android:onClick="openLibrary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/button_library" />
 
             </LinearLayout>
 
@@ -92,12 +87,6 @@
                     android:background="@mipmap/practice_icon_alt"
                     android:onClick="openPractice" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/button_practice" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -112,15 +101,8 @@
                     android:layout_width="@dimen/main_icon_size"
                     android:layout_height="@dimen/main_icon_size"
                     android:layout_gravity="center"
-                    android:background="@mipmap/scan_icon_alt"
+                    android:background="@mipmap/scan_icon"
                     android:onClick="openScan" />
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/button_scan" />
 
             </LinearLayout>
 
@@ -138,7 +120,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Prototype made by the ReChoir group. Copyright in effect so beware of any mischief!"
+                android:text="Prototype made by the ReChoir group. Copyright in effect. Do not fuck with us."
                 android:textColor="@color/white"
                 android:textSize="11sp" />
 
