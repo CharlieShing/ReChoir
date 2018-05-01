@@ -28,11 +28,11 @@ public class CanvasView extends View {
     private float dLineY;
 
     private float lLength; // Line length
-    private Paint lPaint;   // Line paint
+    private Paint linePaint;   // Line paint
 
     // Define variables for animation
     private boolean playing;
-    private boolean loop;
+    private boolean looping;
     private int fps = 60;
     private int speed;
 
@@ -41,6 +41,10 @@ public class CanvasView extends View {
     private float lineSpacing; // The spacing between each line in sheet
     private int lines; // Number of lines in sheet
     private int currentLine;
+
+    private Paint loopPaint;
+    private float loopFromStartX, loopFromStartY, loopToStartX, loopToStartY,
+                    loopFromEndX, loopFromEndY, loopToEndX, loopToEndY;
 
 
     public CanvasView(Context c, AttributeSet attrs) {
@@ -66,15 +70,36 @@ public class CanvasView extends View {
         currentLine = 1;
 
         playing = false;
-        loop = false;
+        looping = false;
 
-        lPaint = new Paint();
-        lPaint.setAntiAlias(true);
-        lPaint.setStrokeWidth(10f);
-        lPaint.setColor(Color.RED);
-        lPaint.setStyle(Paint.Style.STROKE);
-        lPaint.setStrokeJoin(Paint.Join.ROUND);
-        lPaint.setAlpha(75);
+        linePaint = new Paint();
+        linePaint.setAntiAlias(true);
+        linePaint.setStrokeWidth(10f);
+        linePaint.setColor(Color.RED);
+        linePaint.setStyle(Paint.Style.STROKE);
+        linePaint.setStrokeJoin(Paint.Join.ROUND);
+        linePaint.setAlpha(75);
+
+        loopPaint = new Paint();
+        loopPaint.setAntiAlias(true);
+        loopPaint.setStrokeWidth(10f);
+        loopPaint.setColor(Color.BLACK);
+        loopPaint.setStyle(Paint.Style.STROKE);
+        loopPaint.setStrokeJoin(Paint.Join.ROUND);
+        loopPaint.setAlpha(75);
+
+        //First loop line coordinates
+        loopFromStartX = 140;
+        loopFromEndX = loopFromStartX;
+        loopFromStartY = 640;
+        loopFromEndY = 1040;
+
+        //Second loop line coordinates
+        loopToStartX = 1000;
+        loopToEndX = loopToStartX;
+        loopToStartY = loopFromStartY;
+        loopToEndY = loopFromEndY;
+
 
         // and we set a new Paint with the desired attributes
         sPaint = new Paint();
@@ -101,21 +126,20 @@ public class CanvasView extends View {
                 // Increase dLineX
                 dLineX += speed;
             } else {
-                // If the last line has been reached start over
-                if (currentLine < lines) {
-                    // Reset dLineX and move to next line by increasing dLineY
+                if (looping && currentLine == 2) {
                     dLineX = -(lStartX - startOfLine);
-                    dLineY += lineSpacing;
-                    currentLine++;
                 } else {
-                    if (loop) {
+                    // If the last line has been reached start over
+                    if (currentLine < lines) {
+                        // Reset dLineX and move to next line by increasing dLineY
+                        dLineX = -(lStartX - startOfLine);
+                        dLineY += lineSpacing;
+                        currentLine++;
+                    } else {
                         dLineX = 0;
                         dLineY = 0;
                         currentLine = 1;
-                    } else {
-                        playing = false;
-                    }
-                }
+                    }}
             }
         }
 
@@ -132,7 +156,18 @@ public class CanvasView extends View {
         lEndY = lStartY + lLength;
 
         // Draw line on canvas
-        canvas.drawLine(lStartX + dLineX, lStartY + dLineY, lEndX + dLineX, lEndY + dLineY, lPaint);
+        canvas.drawLine(lStartX + dLineX, lStartY + dLineY, lEndX + dLineX, lEndY + dLineY, linePaint);
+
+        // If looping activated show looping stuff
+        if (looping) {
+            //canvas.drawPaint(loopPaint);
+            //canvas.drawText("1", 10, 25, textPaint);
+            //canvas.drawPaint(loopPaint);
+            //canvas.drawText("2", 20, 25, loopPaint);
+            canvas.drawLine(loopFromStartX, loopFromStartY, loopFromEndX, loopFromEndY, loopPaint);
+            canvas.drawLine(loopToStartX, loopToStartY, loopToEndX, loopToEndY, loopPaint);
+        }
+
         this.postInvalidateDelayed( 1000 / fps);
     }
 
@@ -186,10 +221,10 @@ public class CanvasView extends View {
     }
 
     public void loop_toggle() {
-        if (loop) {
-            loop = false;
+        if (looping) {
+            looping = false;
         } else {
-            loop = true;
+            looping = true;
         }
     }
 }
