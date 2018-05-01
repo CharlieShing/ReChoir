@@ -34,6 +34,7 @@ public class CanvasView extends View {
     private boolean playing;
     private boolean loop;
     private int fps = 60;
+    private int speed;
 
     private float endOfLine; // The max X value for line
     private float startOfLine; // All but the first line start in different place
@@ -60,6 +61,7 @@ public class CanvasView extends View {
         dLineX = 0;
         dLineY = 0;
 
+        speed = 1;
         lines = 3;
         currentLine = 1;
 
@@ -97,7 +99,7 @@ public class CanvasView extends View {
         if (playing) {
             if ((lStartX + dLineX) < endOfLine) {
                 // Increase dLineX
-                dLineX += 3;
+                dLineX += speed;
             } else {
                 // If the last line has been reached start over
                 if (currentLine < lines) {
