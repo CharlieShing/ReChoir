@@ -45,6 +45,7 @@ public class CanvasView extends View {
     private Paint loopPaint;
     private float loopFromStartX, loopFromStartY, loopToStartX, loopToStartY,
                     loopFromEndX, loopFromEndY, loopToEndX, loopToEndY;
+    private boolean play_toggle;
 
 
     public CanvasView(Context c, AttributeSet attrs) {
@@ -103,6 +104,8 @@ public class CanvasView extends View {
 
         // and we set a new Paint with the desired attributes
         sPaint = new Paint();
+
+        play_toggle = false;
     }
 
     // override onDraw
@@ -140,6 +143,10 @@ public class CanvasView extends View {
                         dLineY = 0;
                         currentLine = 1;
                     }}
+            }
+            if (play_toggle) {
+                playing = false;
+                play_toggle = false;
             }
         }
 
@@ -216,6 +223,11 @@ public class CanvasView extends View {
             dLineX += forwardStep;
         } else {
             dLineX = endOfLine - lStartX;
+            if (!playing) {
+                playing = true;
+                play_toggle = true;
+            }
+
         }
 
     }
