@@ -24,7 +24,7 @@ public class CanvasView extends View {
     private float lStartY;
     private float lEndX;
     private float lEndY;
-    private float dLineX; // When starting to play this stores the current delta
+    private float dLineX; // When starting to play_toggle this stores the current delta
     private float dLineY;
 
     private float lLength; // Line length
@@ -137,26 +137,22 @@ public class CanvasView extends View {
     }
 
     public void play() {
-        int forwardStep = 100;
-        if (playing) {
-            if (dLineX + lStartX + forwardStep < endOfLine) {
-                dLineX += forwardStep;
-            } else {
-                dLineX = endOfLine - lStartX;
-            }
-        } else {
+        if (!playing) {
             playing = true;
         }
     }
 
-    public void stop() {
-        if (!playing) {
-            dLineX = 0;
-            dLineY = 0;
-            currentLine = 1;
-        } else {
+    public void pause() {
+        if (playing) {
             playing = false;
         }
+    }
+
+    public void stop() {
+        dLineX = 0;
+        dLineY = 0;
+        currentLine = 1;
+        playing = false;
     }
 
     public void rewind() {
@@ -179,7 +175,17 @@ public class CanvasView extends View {
         }
     }
 
-    public void loop() {
+    public void forward() {
+        int forwardStep = 100;
+        if (dLineX + lStartX + forwardStep < endOfLine) {
+            dLineX += forwardStep;
+        } else {
+            dLineX = endOfLine - lStartX;
+        }
+
+    }
+
+    public void loop_toggle() {
         if (loop) {
             loop = false;
         } else {

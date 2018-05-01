@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
@@ -47,7 +49,6 @@ public class PracticeActivity extends AppCompatActivity {
         sequence.setConfig(config);
         sequence.addSequenceItem(slider, "Slide up to reveal more options", ok);
         sequence.start();
-
     }
 
     @Override
@@ -63,24 +64,28 @@ public class PracticeActivity extends AppCompatActivity {
     }
 
     @SuppressLint("NewApi")
-    public void play(View v) {
-        customCanvas.play();
-        if(!mp.isPlaying()) {
+    public void play_toggle(View v) {
+        if (!mp.isPlaying()) {
+            customCanvas.play();
             mp.start();
-            //mp.seekTo(17000);
         } else {
-            mp.seekTo(mp.getCurrentPosition() + seekD);
+            customCanvas.pause();
+            mp.pause();
         }
+
+        // Toggle play button background
+        Button play_button = (Button) findViewById(R.id.button_play);
+        play_button.setBackgroundResource(mp.isPlaying() ? R.mipmap.pause_icon : R.mipmap.play_icon);
     }
 
     public void stop(View v) {
         customCanvas.stop();
-        if(!mp.isPlaying()) {
-            mp.seekTo(0);
-            mp.pause();
-        } else {
-            mp.pause();
-        }
+        mp.pause();
+        mp.seekTo(0);
+
+        // Toggle play button background
+        Button play_button = (Button) findViewById(R.id.button_play);
+        play_button.setBackgroundResource(mp.isPlaying() ? R.mipmap.pause_icon : R.mipmap.play_icon);
     }
 
     @SuppressLint("NewApi")
@@ -88,14 +93,28 @@ public class PracticeActivity extends AppCompatActivity {
         customCanvas.rewind();
         mp.pause();
         mp.seekTo(mp.getCurrentPosition() - seekD);
+
+        // Toggle play button background
+        Button play_button = (Button) findViewById(R.id.button_play);
+        play_button.setBackgroundResource(mp.isPlaying() ? R.mipmap.pause_icon : R.mipmap.play_icon);
+    }
+
+
+    public void forward(View v) {
+        customCanvas.forward();
+        mp.seekTo(mp.getCurrentPosition() + seekD);
     }
 
     public void loop(View v) {
-        customCanvas.loop();
+        customCanvas.loop_toggle();
         if (!looping) {
             mp.setLooping(true);
         } else {
             mp.setLooping(false);
         }
+
+        // Toggle looping background
+        Button play_button = (Button) findViewById(R.id.button_play);
+        play_button.setBackgroundResource(mp.isPlaying() ? R.mipmap.pause_icon : R.mipmap.play_icon);
     }
 }
