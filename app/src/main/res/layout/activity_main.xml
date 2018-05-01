@@ -110,7 +110,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Prototype made by the ReChoir group. Copyright in effect. Do not fuck with us."
+            android:text="Prototype made by the ReChoir group. Copyright in effect ;)"
             android:textColor="@color/white"
             android:textSize="11sp" />
 

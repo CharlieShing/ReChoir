@@ -59,7 +59,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black_transparent"
             android:orientation="horizontal"
             android:padding="10dp">
 
@@ -91,6 +90,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:spinnerMode="dropdown" />
+
         </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"/>
     </LinearLayout>
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>
