@@ -31,7 +31,7 @@ public class PracticeActivity extends AppCompatActivity {
         actionbar.setHomeAsUpIndicator(R.drawable.back_icon);
 
         // Initialize mp
-        mp = MediaPlayer.create(this, R.raw.avemaria);
+        mp = MediaPlayer.create(this, R.raw.princeigor);
         looping = false;
         seekD = 5000;
 
@@ -67,7 +67,7 @@ public class PracticeActivity extends AppCompatActivity {
         customCanvas.play();
         if(!mp.isPlaying()) {
             mp.start();
-            mp.seekTo(17000);
+            //mp.seekTo(17000);
         } else {
             mp.seekTo(mp.getCurrentPosition() + seekD);
         }
