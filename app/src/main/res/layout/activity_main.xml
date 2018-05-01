@@ -1,142 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- Use DrawerLayout as root container for activity -->
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <!-- Contains main content -->
-    <RelativeLayout
-        android:id="@+id/main_layout"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/white"
-        android:orientation="vertical">
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/toolbar"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorPrimaryDark"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_below="@id/toolbar"/>
 
+    <TextView
+        android:id="@+id/main_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/main_header_margin"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:paddingTop="30dp"
+        android:text="ReChoir"
+        android:textColor="#000000"
+        android:textSize="@dimen/main_header_font_size" />
+
+    <LinearLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_header"
+        android:layout_margin="@dimen/main_header_margin"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/library_button_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/library_button"
+                android:layout_width="@dimen/main_icon_size"
+                android:layout_height="@dimen/main_icon_size"
+                android:layout_gravity="center"
+                android:background="@mipmap/library_icon"
+                android:onClick="openLibrary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/practice_button_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/practice_button"
+                android:layout_width="@dimen/main_icon_size"
+                android:layout_height="@dimen/main_icon_size"
+                android:layout_gravity="center"
+                android:background="@mipmap/practice_icon"
+                android:onClick="openPractice" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/scan_button_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/scan_button"
+                android:layout_width="@dimen/main_icon_size"
+                android:layout_height="@dimen/main_icon_size"
+                android:layout_gravity="center"
+                android:background="@mipmap/scan_icon"
+                android:onClick="openScan" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/main_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#777777"
+        android:orientation="horizontal"
+        android:padding="5dp">
 
         <TextView
-            android:id="@+id/main_header"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/main_header_margin"
-            android:fontFamily="cursive"
-            android:gravity="center"
-            android:paddingTop="30dp"
-            android:text="ReChoir"
-            android:textColor="#000000"
-            android:textSize="@dimen/main_header_font_size" />
+            android:text="Prototype made by the ReChoir group. Copyright in effect. Do not fuck with us."
+            android:textColor="@color/white"
+            android:textSize="11sp" />
 
-        <LinearLayout
-            android:id="@+id/main_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/main_header"
-            android:layout_margin="@dimen/main_header_margin"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/library_button_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.33"
-                android:orientation="vertical">
+    </LinearLayout>
 
 
-                <Button
-                    android:id="@+id/library_button"
-                    android:layout_width="@dimen/main_icon_size"
-                    android:layout_height="@dimen/main_icon_size"
-                    android:layout_gravity="center"
-                    android:background="@mipmap/library_icon"
-                    android:onClick="openLibrary" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/practice_button_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.33"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/practice_button"
-                    android:layout_width="@dimen/main_icon_size"
-                    android:layout_height="@dimen/main_icon_size"
-                    android:layout_gravity="center"
-                    android:background="@mipmap/practice_icon_alt"
-                    android:onClick="openPractice" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/scan_button_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.33"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/scan_button"
-                    android:layout_width="@dimen/main_icon_size"
-                    android:layout_height="@dimen/main_icon_size"
-                    android:layout_gravity="center"
-                    android:background="@mipmap/scan_icon"
-                    android:onClick="openScan" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/main_footer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="#777777"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Prototype made by the ReChoir group. Copyright in effect. Do not fuck with us."
-                android:textColor="@color/white"
-                android:textSize="11sp" />
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <!-- Container fo contents of drawer -->
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/drawer_view" />
-
-
-</android.support.v4.widget.DrawerLayout>
+</RelativeLayout>

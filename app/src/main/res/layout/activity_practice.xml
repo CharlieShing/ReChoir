@@ -65,7 +65,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:onClick="rewind"
-                android:background="@mipmap/rewind_icon_alt"
+                android:background="@mipmap/rewind_icon"
                 android:layout_marginRight="1dp"/>
 
             <Button
@@ -73,7 +73,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:onClick="stop"
-                android:background="@mipmap/paus_icon"
+                android:background="@mipmap/pause_icon"
                 android:layout_marginRight="1dp"/>
 
             <Button
@@ -82,7 +82,7 @@
                 android:layout_height="60dp"
                 android:onClick="play"
                 android:layout_marginRight="20dp"
-                android:background="@mipmap/forward_icon_alt"/>
+                android:background="@mipmap/forward_icon"/>
 
             <RelativeLayout
                 android:layout_width="60dp"

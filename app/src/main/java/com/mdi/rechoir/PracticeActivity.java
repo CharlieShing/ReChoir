@@ -55,6 +55,13 @@ public class PracticeActivity extends AppCompatActivity {
         super.onStart();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mp.stop();
+        customCanvas = null;
+    }
+
     @SuppressLint("NewApi")
     public void play(View v) {
         customCanvas.play();

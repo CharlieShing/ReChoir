@@ -17,4 +17,5 @@
     <string name="camera_not_found">No camer :/</string>
     <string name="take_picture">Take picture</string>
     <string name="login">Login</string>
+    <string name="menu_login">Login</string>
 </resources>
