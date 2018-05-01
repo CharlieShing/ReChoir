@@ -17,13 +17,8 @@ public class LibraryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
 
-        Intent intent = getIntent();
-
-        // See if practice has been opened yet
-        final String practice_first_open = intent.getStringExtra("PRACTICE_FIRST_OPEN");
-
         // Array which represents available songs in list
-        final String[] songs = {"Ave Maria"};
+        final String[] songs = {"Ave Maria", "Danza del Príncipe Igor"};
         Arrays.sort(songs);
 
         final ListView listView = (ListView) findViewById(R.id.listView);
@@ -36,14 +31,8 @@ public class LibraryActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Object listItem = listView.getItemAtPosition(position);
                 Intent intent = new Intent(cnt_this, PracticeActivity.class);
                 intent.putExtra("SONG_NAME", songs[position]);
-                if (practice_first_open.equals("yes")) {
-                    intent.putExtra("FIRST_OPEN", "yes");
-                } else {
-                    intent.putExtra("FIRST_OPEN", "no");
-                }
                 startActivity(intent);
             }
         });

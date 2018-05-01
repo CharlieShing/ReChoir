@@ -44,34 +44,24 @@ public class MainActivity extends AppCompatActivity {
                         menuItem.setChecked(true);
                         // close drawer when item is tapped
                         mDrawerLayout.closeDrawers();
-
                         openLogin();
-
                         return true;
                     }
                 });
 
 
         /* Showcase for UX instructions */
-
         View lib_button = findViewById(R.id.library_button_container);
         View practice_button = findViewById(R.id.practice_button_container);
         View scan_button = findViewById(R.id.scan_button_container);
-        View nav_view = findViewById(R.id.nav_view);
-
         String ok = "Got it!";
-
         ShowcaseConfig config = new ShowcaseConfig();
         config.setDelay(500); // half second between each showcase view
-
         MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this, "Main");
-
         sequence.setConfig(config);
-
         sequence.addSequenceItem(lib_button, "Library contains available songs to practice", ok);
         sequence.addSequenceItem(practice_button, "Here you go when you want to continue practicing song", ok);
         sequence.addSequenceItem(scan_button, "Scan notes lets you use the camera to scan a sheet of notes", ok);
-
         sequence.start();
     }
 
@@ -88,22 +78,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openLibrary(View view){
         Intent intent = new Intent(this, LibraryActivity.class);
-        if (practiceFirstOpen) {
-            intent.putExtra("PRACTICE_FIRST_OPEN", "yes");
-        } else {
-            intent.putExtra("PRACTICE_FIRST_OPEN", "no");
-        }
         startActivity(intent);
     }
 
     public void openPractice(View view){
         Intent intent = new Intent(this, PracticeActivity.class);
-        if (practiceFirstOpen) {
-            intent.putExtra("FIRST_OPEN", "yes");
-            practiceFirstOpen = false;
-        } else {
-            intent.putExtra("FIRST_OPEN", "no");
-        }
         startActivity(intent);
     }
 
